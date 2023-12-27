@@ -20,11 +20,13 @@ import okhttp3.OkHttpClient
 
 @SuppressLint("UnsafeOptInUsageError")
 class Player : ComponentActivity() {
+    private lateinit var exoPlayer: ExoPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.player)
 
-        val exoPlayer: ExoPlayer = ExoPlayer.Builder(this@Player)
+        exoPlayer = ExoPlayer.Builder(this@Player)
             .setRenderersFactory(DefaultRenderersFactory(this@Player)
                 .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
                 .forceEnableMediaCodecAsynchronousQueueing())
@@ -48,5 +50,16 @@ class Player : ComponentActivity() {
         val playerView: PlayerView = findViewById(R.id.playerView)
         playerView.keepScreenOn = true
         playerView.player = exoPlayer
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val playerView: PlayerView = findViewById(R.id.playerView)
+        playerView.keepScreenOn = false
+        playerView.player = null
+
+        exoPlayer.pause()
+        exoPlayer.stop()
+        exoPlayer.release()
     }
 }

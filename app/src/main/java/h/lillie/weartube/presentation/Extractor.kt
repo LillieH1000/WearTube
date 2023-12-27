@@ -33,4 +33,29 @@ class Extractor {
 
         return client.newCall(request).execute().body?.string()!!
     }
+
+    fun searchRequest(context: Context, query: String) : String {
+        val body: RequestBody = """{
+            "context": {
+                "client": {
+                    "hl": "en",
+                    "gl": "${context.resources.configuration.locales.get(0).country}",
+                    "clientName": "WEB",
+                    "clientVersion": "2.20220801.00.00"
+                }
+            },
+            "contentCheckOk": true,
+            "racyCheckOk": true,
+            "query": "$query"
+        }""".trimIndent().toRequestBody()
+
+        val client: OkHttpClient = OkHttpClient.Builder().build()
+
+        val request = Request.Builder()
+            .method("POST", body)
+            .url("https://www.youtube.com/youtubei/v1/search?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false")
+            .build()
+
+        return client.newCall(request).execute().body?.string()!!
+    }
 }

@@ -8,15 +8,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="WearTube"
-        android:supportsRtl="true"
-        android:theme="@android:style/Theme.DeviceDefault">
+        android:supportsRtl="false"
+        android:theme="@style/MainTheme">
         <uses-library android:name="com.google.android.wearable" android:required="true" />
         <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />
         <activity
             android:name=".presentation.Main"
             android:exported="true"
-            android:taskAffinity=""
-            android:theme="@style/MainTheme.Starting">
+            android:taskAffinity="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,8 +24,7 @@
         <activity
             android:name=".presentation.Player"
             android:exported="true"
-            android:taskAffinity=""
-            android:theme="@style/MainTheme.Starting">
+            android:taskAffinity="">
         </activity>
     </application>
 </manifest>

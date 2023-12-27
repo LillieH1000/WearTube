@@ -49,7 +49,32 @@ android {
 }
 
 dependencies {
+    // OkHttp
+    val okhttp_version = "4.12.0"
+    implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
 
+    // Okio
+    val okio_version = "3.6.0"
+    implementation("com.squareup.okio:okio:$okio_version")
+
+    // Gson
+    val gson_version = "2.10.1"
+    implementation("com.google.code.gson:gson:$gson_version")
+
+    // Media3
+    val media3_version = "1.2.0"
+    implementation("androidx.media3:media3-exoplayer:$media3_version")
+    implementation("androidx.media3:media3-exoplayer-hls:$media3_version")
+    implementation("androidx.media3:media3-datasource-okhttp:$media3_version")
+    implementation("androidx.media3:media3-ui:$media3_version")
+    implementation("androidx.media3:media3-session:$media3_version")
+    implementation("androidx.media3:media3-extractor:$media3_version")
+    implementation("androidx.media3:media3-database:$media3_version")
+    implementation("androidx.media3:media3-decoder:$media3_version")
+    implementation("androidx.media3:media3-datasource:$media3_version")
+    implementation("androidx.media3:media3-common:$media3_version")
+
+    // Unorganized
     implementation("com.google.android.gms:play-services-wearable:18.1.0")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui")

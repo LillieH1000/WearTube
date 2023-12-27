@@ -31,7 +31,6 @@ class Player : AppCompatActivity() {
                 .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
                 .forceEnableMediaCodecAsynchronousQueueing())
             .setSeekParameters(SeekParameters.EXACT)
-            .setWakeMode(C.WAKE_MODE_NETWORK)
             .setHandleAudioBecomingNoisy(true)
             .setSeekBackIncrementMs(TimeUnit.SECONDS.toMillis(10))
             .setSeekForwardIncrementMs(TimeUnit.SECONDS.toMillis(10))

@@ -89,8 +89,19 @@ class Main : AppCompatActivity() {
                         videoButton.layoutParams = LinearLayout.LayoutParams(deviceWidth, 200)
                         videoButton.setOnClickListener {
                             val playerRequest: String = Extractor().playerRequest(this@Main, videoID)
+                            val playerObject = JSONObject(playerRequest)
+
+                            val artworkArray: JSONArray = playerObject.getJSONObject("videoDetails").getJSONObject("thumbnail").getJSONArray("thumbnails")
+                            val artworkUrl: String = artworkArray.getJSONObject((artworkArray.length() - 1)).optString("url")
+                            val title: String = playerObject.getJSONObject("videoDetails").optString("title")
+                            val author: String = playerObject.getJSONObject("videoDetails").optString("author")
+                            val videoUrl: String = playerObject.getJSONObject("streamingData").optString("hlsManifestUrl")
+
                             val intent = Intent(this@Main, Player::class.java)
-                            intent.putExtra("url", JSONObject(playerRequest).getJSONObject("streamingData").optString("hlsManifestUrl"))
+                            intent.putExtra("artwork", artworkUrl)
+                            intent.putExtra("title", title)
+                            intent.putExtra("author", author)
+                            intent.putExtra("url", videoUrl)
                             startActivity(intent)
                         }
 

@@ -27,7 +27,7 @@ import androidx.wear.compose.material.TimeText
 import h.lillie.weartube.R
 import h.lillie.weartube.presentation.theme.WearTubeTheme
 
-class MainActivity : ComponentActivity() {
+class Main : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
 

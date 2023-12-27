@@ -41,14 +41,6 @@ android {
         jvmTarget = "17"
     }
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -57,6 +49,36 @@ android {
 }
 
 dependencies {
+    // Core
+    val core_version = "1.12.0"
+    implementation("androidx.core:core-ktx:$core_version")
+
+    // AppCompat
+    val appcompat_version = "1.6.1"
+    implementation("androidx.appcompat:appcompat:$appcompat_version")
+
+    // ConstraintLayout
+    val constraintlayout_version = "2.1.4"
+    implementation("androidx.constraintlayout:constraintlayout:$constraintlayout_version")
+
+    // Material
+    val material_version = "1.10.0"
+    implementation("com.google.android.material:material:$material_version")
+
+    // Kotlinx Coroutines
+    val kotlinx_coroutines_version = "1.7.3"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version")
+
+    // Lifecycle
+    val lifecycle_version = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-common:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
+    // Play Services Wearable
+    val playserviceswearable_version = "18.1.0"
+    implementation("com.google.android.gms:play-services-wearable:$playserviceswearable_version")
+
     // OkHttp
     val okhttp_version = "4.12.0"
     implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
@@ -65,9 +87,9 @@ dependencies {
     val okio_version = "3.6.0"
     implementation("com.squareup.okio:okio:$okio_version")
 
-    // Gson
-    val gson_version = "2.10.1"
-    implementation("com.google.code.gson:gson:$gson_version")
+    // Coil
+    val coil_version = "2.5.0"
+    implementation("io.coil-kt:coil:$coil_version")
 
     // Media3
     val media3_version = "1.2.0"
@@ -81,14 +103,4 @@ dependencies {
     implementation("androidx.media3:media3-decoder:$media3_version")
     implementation("androidx.media3:media3-datasource:$media3_version")
     implementation("androidx.media3:media3-common:$media3_version")
-
-    // Unorganized
-    implementation("com.google.android.gms:play-services-wearable:18.1.0")
-    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.wear.compose:compose-material:1.2.1")
-    implementation("androidx.wear.compose:compose-foundation:1.2.1")
-    implementation("androidx.activity:activity-compose:1.8.2")
-    implementation("androidx.core:core-splashscreen:1.0.1")
 }

@@ -14,13 +14,13 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.ScrollView
 import android.widget.TextView
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import h.lillie.weartube.R
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class Main : ComponentActivity() {
+class Main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)

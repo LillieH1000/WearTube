@@ -3,7 +3,7 @@ package h.lillie.weartube.presentation
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 
 @SuppressLint("UnsafeOptInUsageError")
-class Player : ComponentActivity() {
+class Player : AppCompatActivity() {
     private lateinit var exoPlayer: ExoPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {

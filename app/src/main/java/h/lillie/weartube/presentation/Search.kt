@@ -70,9 +70,12 @@ class Search : AppCompatActivity() {
                             val playerRequest: String = Extractor().playerRequest(this@Search, videoID)
                             val playerObject = JSONObject(playerRequest)
 
+                            val nextRequest: String = Extractor().nextRequest(this@Search, videoID)
+                            val nextObject = JSONObject(nextRequest)
+
                             val artworkArray: JSONArray = playerObject.getJSONObject("videoDetails").getJSONObject("thumbnail").getJSONArray("thumbnails")
                             val artworkUrl: String = artworkArray.getJSONObject((artworkArray.length() - 1)).optString("url")
-                            val title: String = playerObject.getJSONObject("videoDetails").optString("title")
+                            val title: String = nextObject.getJSONObject("contents").getJSONObject("singleColumnWatchNextResults").getJSONObject("results").getJSONObject("results").getJSONArray("contents").getJSONObject(1).getJSONObject("slimVideoMetadataSectionRenderer").getJSONArray("contents").getJSONObject(0).getJSONObject("elementRenderer").getJSONObject("newElement").getJSONObject("type").getJSONObject("componentType").getJSONObject("model").getJSONObject("videoMetadataModel").getJSONObject("videoMetadata").getJSONObject("title").optString("content")
                             val author: String = playerObject.getJSONObject("videoDetails").optString("author")
                             val videoUrl: String = playerObject.getJSONObject("streamingData").optString("hlsManifestUrl")
 

@@ -7,6 +7,8 @@ import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.os.PowerManager
 import android.os.StrictMode
+import android.widget.Button
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import h.lillie.weartube.R
 
@@ -33,7 +35,13 @@ class Main : AppCompatActivity() {
         wakeLock.setReferenceCounted(false)
         wakeLock.acquire()
 
-        startActivity(Intent(this@Main, Search::class.java))
+        val scrollView: ScrollView = findViewById(R.id.scrollView)
+        scrollView.requestFocus()
+
+        val search: Button = findViewById(R.id.search)
+        search.setOnClickListener {
+            startActivity(Intent(this@Main, Search::class.java))
+        }
     }
 
     override fun onDestroy() {

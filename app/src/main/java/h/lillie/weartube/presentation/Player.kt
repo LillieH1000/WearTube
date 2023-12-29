@@ -61,6 +61,16 @@ class Player : AppCompatActivity() {
         exoPlayer.prepare()
     }
 
+    override fun onStop() {
+        super.onStop()
+        exoPlayer.pause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        exoPlayer.play()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         playerSession?.run {

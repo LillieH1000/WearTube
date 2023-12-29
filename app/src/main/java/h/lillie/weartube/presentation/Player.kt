@@ -1,6 +1,5 @@
 package h.lillie.weartube.presentation
 
-import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +11,6 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 import h.lillie.weartube.R
 
-@SuppressLint("UnsafeOptInUsageError")
 class Player : AppCompatActivity() {
     private lateinit var playerControllerFuture: ListenableFuture<MediaController>
     private lateinit var playerController: MediaController

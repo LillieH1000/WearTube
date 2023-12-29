@@ -62,7 +62,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:$constraintlayout_version")
 
     // Material
-    val material_version = "1.10.0"
+    val material_version = "1.11.0"
     implementation("com.google.android.material:material:$material_version")
 
     // Kotlinx Coroutines
@@ -90,6 +90,10 @@ dependencies {
     // Coil
     val coil_version = "2.5.0"
     implementation("io.coil-kt:coil:$coil_version")
+
+    // Gson
+    val gson_version = "2.10.1"
+    implementation("com.google.code.gson:gson:$gson_version")
 
     // Media3
     val media3_version = "1.2.0"

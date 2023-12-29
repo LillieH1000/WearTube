@@ -9,6 +9,7 @@ import android.os.PowerManager
 import android.os.StrictMode
 import android.widget.Button
 import android.widget.ScrollView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import h.lillie.weartube.R
 
@@ -46,6 +47,11 @@ class Main : AppCompatActivity() {
         val search: Button = findViewById(R.id.search)
         search.setOnClickListener {
             startActivity(Intent(this@Main, Search::class.java))
+        }
+
+        val settings: Button = findViewById(R.id.settings)
+        settings.setOnClickListener {
+            Toast.makeText(this@Main, "In Development", Toast.LENGTH_SHORT).show()
         }
     }
 

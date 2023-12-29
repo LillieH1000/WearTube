@@ -38,6 +38,11 @@ class Main : AppCompatActivity() {
         val scrollView: ScrollView = findViewById(R.id.scrollView)
         scrollView.requestFocus()
 
+        val trending: Button = findViewById(R.id.trending)
+        trending.setOnClickListener {
+            startActivity(Intent(this@Main, Trending::class.java))
+        }
+
         val search: Button = findViewById(R.id.search)
         search.setOnClickListener {
             startActivity(Intent(this@Main, Search::class.java))

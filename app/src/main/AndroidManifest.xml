@@ -25,6 +25,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".presentation.Trending"
+            android:exported="true"
+            android:taskAffinity="">
+        </activity>
+        <activity
             android:name=".presentation.Search"
             android:exported="true"
             android:taskAffinity="">

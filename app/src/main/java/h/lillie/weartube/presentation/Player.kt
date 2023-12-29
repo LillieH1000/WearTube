@@ -30,16 +30,6 @@ class Player : AppCompatActivity() {
         }, MoreExecutors.directExecutor())
     }
 
-    override fun onStop() {
-        super.onStop()
-        playerController.pause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        playerController.play()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
 

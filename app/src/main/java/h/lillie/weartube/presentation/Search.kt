@@ -17,6 +17,7 @@ import android.widget.Space
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.google.gson.Gson
 import h.lillie.weartube.R
 import org.json.JSONArray
 import org.json.JSONException
@@ -75,12 +76,13 @@ class Search : AppCompatActivity() {
                             val author: String = playerObject.getJSONObject("videoDetails").optString("author")
                             val videoUrl: String = playerObject.getJSONObject("streamingData").optString("hlsManifestUrl")
 
-                            val intent = Intent(this@Search, Player::class.java)
-                            intent.putExtra("artwork", artworkUrl)
-                            intent.putExtra("title", title)
-                            intent.putExtra("author", author)
-                            intent.putExtra("url", videoUrl)
-                            startActivity(intent)
+                            Application.setVideoData(Gson().toJson(Data(
+                                videoUrl,
+                                artworkUrl,
+                                title,
+                                author
+                            )))
+                            startActivity(Intent(this@Search, Player::class.java))
                         }
 
                         videoRelativeView.addView(videoImageView)

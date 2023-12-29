@@ -9,6 +9,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="WearTube"
         android:supportsRtl="false"
+        android:name=".presentation.Application"
         android:theme="@style/MainTheme">
         <uses-library android:name="com.google.android.wearable" android:required="true" />
         <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />

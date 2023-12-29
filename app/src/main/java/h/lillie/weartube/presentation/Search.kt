@@ -28,8 +28,8 @@ class Search : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
 
-        val searchScrollView: ScrollView = findViewById(R.id.searchScrollView)
-        val searchScrollLayout: LinearLayout = findViewById(R.id.searchScrollLayout)
+        val scrollView: ScrollView = findViewById(R.id.scrollView)
+        val scrollLayout: LinearLayout = findViewById(R.id.scrollLayout)
         val deviceWidth: Int = windowManager.currentWindowMetrics.bounds.width()
 
         val searchBar: EditText = findViewById(R.id.searchBar)
@@ -37,8 +37,8 @@ class Search : AppCompatActivity() {
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
                 val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(searchBar.windowToken, 0)
-                searchScrollLayout.removeAllViews()
-                searchScrollView.requestFocus()
+                scrollLayout.removeAllViews()
+                scrollView.requestFocus()
 
                 val searchRequest: String = Extractor().searchRequest(this@Search, searchBar.text.toString())
                 val searchContents: JSONArray = JSONObject(searchRequest).getJSONObject("contents").getJSONObject("twoColumnSearchResultsRenderer").getJSONObject("primaryContents").getJSONObject("sectionListRenderer").getJSONArray("contents").getJSONObject(0).getJSONObject("itemSectionRenderer").getJSONArray("contents")
@@ -91,11 +91,11 @@ class Search : AppCompatActivity() {
                         videoRelativeView.addView(videoImageView)
                         videoRelativeView.addView(videoTitleTextView)
                         videoRelativeView.addView(videoButton)
-                        searchScrollLayout.addView(videoRelativeView)
+                        scrollLayout.addView(videoRelativeView)
 
                         val spaceView = Space(this@Search)
                         spaceView.minimumHeight = 4
-                        searchScrollLayout.addView(spaceView)
+                        scrollLayout.addView(spaceView)
                     } catch (e: JSONException) {
                         Log.e("JSONException", e.toString())
                     }

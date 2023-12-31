@@ -7,10 +7,10 @@ import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.os.PowerManager
 import android.os.StrictMode
-import android.widget.Button
 import android.widget.ScrollView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
 import h.lillie.weartube.R
 
 @SuppressLint("WakelockTimeout")
@@ -39,17 +39,17 @@ class Main : AppCompatActivity() {
         val scrollView: ScrollView = findViewById(R.id.scrollView)
         scrollView.requestFocus()
 
-        val trending: Button = findViewById(R.id.trending)
+        val trending: MaterialButton = findViewById(R.id.trending)
         trending.setOnClickListener {
             startActivity(Intent(this@Main, Trending::class.java))
         }
 
-        val search: Button = findViewById(R.id.search)
+        val search: MaterialButton = findViewById(R.id.search)
         search.setOnClickListener {
             startActivity(Intent(this@Main, Search::class.java))
         }
 
-        val settings: Button = findViewById(R.id.settings)
+        val settings: MaterialButton = findViewById(R.id.settings)
         settings.setOnClickListener {
             Toast.makeText(this@Main, "In Development", Toast.LENGTH_SHORT).show()
         }

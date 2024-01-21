@@ -66,6 +66,20 @@
             android:visibility="gone"
             tools:ignore="ContentDescription,UseAppTint" />
 
+        <com.google.android.material.slider.Slider
+            android:id="@+id/playerSlider"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:valueFrom="0"
+            android:visibility="gone"
+            app:trackHeight="3dp"
+            app:labelBehavior="gone"
+            app:thumbColor="@color/red"
+            app:trackColorActive="@color/red"
+            app:trackColorInactive="@color/lightgrey"
+            app:thumbRadius="5dp"
+            app:haloRadius="5dp" />
+
     </RelativeLayout>
 
 </RelativeLayout>

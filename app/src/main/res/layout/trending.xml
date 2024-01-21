@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:background="@android:color/black">
+    android:background="@color/black">
 
     <LinearLayout
         android:id="@+id/scrollLayout"

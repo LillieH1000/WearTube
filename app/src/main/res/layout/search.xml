@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="10dp"
     android:paddingBottom="20dp"
-    android:background="@android:color/black">
+    android:background="@color/black">
 
     <EditText
         android:id="@+id/searchBar"

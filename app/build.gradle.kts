@@ -71,7 +71,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version")
 
     // Lifecycle
-    val lifecycle_version = "2.6.2"
+    val lifecycle_version = "2.7.0"
     implementation("androidx.lifecycle:lifecycle-common:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
@@ -96,7 +96,7 @@ dependencies {
     implementation("com.google.code.gson:gson:$gson_version")
 
     // Media3
-    val media3_version = "1.2.0"
+    val media3_version = "1.2.1"
     implementation("androidx.media3:media3-exoplayer:$media3_version")
     implementation("androidx.media3:media3-exoplayer-hls:$media3_version")
     implementation("androidx.media3:media3-datasource-okhttp:$media3_version")

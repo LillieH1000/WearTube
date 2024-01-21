@@ -28,8 +28,6 @@ class Player : AppCompatActivity(), Player.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.player)
 
-        val deviceHeight: Int = windowManager.currentWindowMetrics.bounds.height()
-
         val playPauseButton: ImageButton = findViewById(R.id.playPauseButton)
         playPauseButton.setOnClickListener {
             if (!playerController.isPlaying) {
@@ -52,7 +50,7 @@ class Player : AppCompatActivity(), Player.Listener {
         }
 
         playerSlider = findViewById(R.id.playerSlider)
-        playerSlider.y = (deviceHeight / 2) + Converter().dpToPx(this@Player, 15f)
+        playerSlider.y = Converter().dpToPx(this@Player, 40f)
         playerSlider.addOnChangeListener { _, value, fromUser ->
             val duration: Float = playerController.duration.toFloat()
             val position: Float = playerController.currentPosition.toFloat()

@@ -8,10 +8,12 @@ import android.os.Bundle
 import android.os.PowerManager
 import android.os.StrictMode
 import android.widget.ScrollView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
+import com.google.gson.Gson
 import h.lillie.weartube.R
+import org.json.JSONArray
+import org.json.JSONObject
 
 @SuppressLint("WakelockTimeout")
 @Suppress("Deprecation")
@@ -51,7 +53,25 @@ class Main : AppCompatActivity() {
 
         val settings: MaterialButton = findViewById(R.id.settings)
         settings.setOnClickListener {
-            Toast.makeText(this@Main, "In Development", Toast.LENGTH_SHORT).show()
+            val playerRequest: String = Extractor().playerRequest(this@Main, "OuLZlZ18APQ")
+            val playerObject = JSONObject(playerRequest)
+
+            val nextRequest: String = Extractor().nextRequest(this@Main, "OuLZlZ18APQ")
+            val nextObject = JSONObject(nextRequest)
+
+            val artworkArray: JSONArray = playerObject.getJSONObject("videoDetails").getJSONObject("thumbnail").getJSONArray("thumbnails")
+            val artworkUrl: String = artworkArray.getJSONObject((artworkArray.length() - 1)).optString("url")
+            val title: String = nextObject.getJSONObject("contents").getJSONObject("singleColumnWatchNextResults").getJSONObject("results").getJSONObject("results").getJSONArray("contents").getJSONObject(1).getJSONObject("slimVideoMetadataSectionRenderer").getJSONArray("contents").getJSONObject(0).getJSONObject("elementRenderer").getJSONObject("newElement").getJSONObject("type").getJSONObject("componentType").getJSONObject("model").getJSONObject("videoMetadataModel").getJSONObject("videoMetadata").getJSONObject("title").optString("content")
+            val author: String = playerObject.getJSONObject("videoDetails").optString("author")
+            val videoUrl: String = playerObject.getJSONObject("streamingData").optString("hlsManifestUrl")
+
+            Application.setVideoData(Gson().toJson(Data(
+                videoUrl,
+                artworkUrl,
+                title,
+                author
+            )))
+            startActivity(Intent(this@Main, Player::class.java))
         }
     }
 

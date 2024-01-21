@@ -49,6 +49,7 @@
             android:scaleType="centerCrop"
             android:background="@android:color/transparent"
             android:tint="@android:color/white"
+            android:padding="2dp"
             android:visibility="gone"
             tools:ignore="ContentDescription,UseAppTint" />
 
@@ -61,6 +62,7 @@
             android:scaleType="centerCrop"
             android:background="@android:color/transparent"
             android:tint="@android:color/white"
+            android:padding="2dp"
             android:visibility="gone"
             tools:ignore="ContentDescription,UseAppTint" />
 

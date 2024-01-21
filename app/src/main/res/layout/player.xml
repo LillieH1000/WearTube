@@ -40,6 +40,30 @@
             android:visibility="gone"
             tools:ignore="ContentDescription,UseAppTint" />
 
+        <ImageButton
+            android:id="@+id/seekBackButton"
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/back"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:tint="@android:color/white"
+            android:visibility="gone"
+            tools:ignore="ContentDescription,UseAppTint" />
+
+        <ImageButton
+            android:id="@+id/seekForwardButton"
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/forward"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:tint="@android:color/white"
+            android:visibility="gone"
+            tools:ignore="ContentDescription,UseAppTint" />
+
     </RelativeLayout>
 
 </RelativeLayout>

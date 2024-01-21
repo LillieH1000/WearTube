@@ -31,14 +31,30 @@ class Player : AppCompatActivity(), Player.Listener {
             }
         }
 
+        val seekBackButton: ImageButton = findViewById(R.id.seekBackButton)
+        seekBackButton.x = Converter().dpToPx(this@Player, -40f)
+        seekBackButton.setOnClickListener {
+            playerController.seekBack()
+        }
+
+        val seekForwardButton: ImageButton = findViewById(R.id.seekForwardButton)
+        seekForwardButton.x = Converter().dpToPx(this@Player, 40f)
+        seekForwardButton.setOnClickListener {
+            playerController.seekForward()
+        }
+
         val overlayView: View = findViewById(R.id.overlayView)
         overlayView.setOnClickListener {
             if (playPauseButton.visibility == View.GONE) {
                 overlayView.setBackgroundColor(0x40000000)
                 playPauseButton.visibility = View.VISIBLE
+                seekBackButton.visibility = View.VISIBLE
+                seekForwardButton.visibility = View.VISIBLE
             } else {
                 overlayView.setBackgroundColor(0x00000000)
                 playPauseButton.visibility = View.GONE
+                seekBackButton.visibility = View.GONE
+                seekForwardButton.visibility = View.GONE
             }
         }
 

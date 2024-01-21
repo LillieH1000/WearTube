@@ -1,5 +1,6 @@
 package h.lillie.weartube.presentation
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 import h.lillie.weartube.R
 
+@SuppressLint("PrivateResource")
 class Player : AppCompatActivity(), Player.Listener {
     private var playerSliderHandler: Handler = Handler(Looper.getMainLooper())
 
@@ -59,6 +61,16 @@ class Player : AppCompatActivity(), Player.Listener {
             }
         }
 
+        val loopButton: ImageButton = findViewById(R.id.loopButton)
+        loopButton.y = Converter().dpToPx(this@Player, -40f)
+        loopButton.setOnClickListener {
+            if (playerController.repeatMode == Player.REPEAT_MODE_OFF) {
+                playerController.repeatMode = Player.REPEAT_MODE_ONE
+            } else {
+                playerController.repeatMode = Player.REPEAT_MODE_OFF
+            }
+        }
+
         val overlayView: View = findViewById(R.id.overlayView)
         overlayView.setOnClickListener {
             if (playPauseButton.visibility == View.GONE) {
@@ -67,12 +79,14 @@ class Player : AppCompatActivity(), Player.Listener {
                 seekBackButton.visibility = View.VISIBLE
                 seekForwardButton.visibility = View.VISIBLE
                 playerSlider.visibility = View.VISIBLE
+                loopButton.visibility = View.VISIBLE
             } else {
                 overlayView.setBackgroundColor(0x00000000)
                 playPauseButton.visibility = View.GONE
                 seekBackButton.visibility = View.GONE
                 seekForwardButton.visibility = View.GONE
                 playerSlider.visibility = View.GONE
+                loopButton.visibility = View.GONE
             }
         }
 
@@ -100,6 +114,16 @@ class Player : AppCompatActivity(), Player.Listener {
             playPauseButton.setImageResource(R.drawable.play)
         } else {
             playPauseButton.setImageResource(R.drawable.pause)
+        }
+    }
+
+    override fun onRepeatModeChanged(repeatMode: Int) {
+        super.onRepeatModeChanged(repeatMode)
+        val loopButton: ImageButton = findViewById(R.id.loopButton)
+        if (repeatMode == Player.REPEAT_MODE_OFF) {
+            loopButton.setImageResource(androidx.media3.ui.R.drawable.exo_icon_repeat_all)
+        } else {
+            loopButton.setImageResource(androidx.media3.ui.R.drawable.exo_icon_repeat_one)
         }
     }
 

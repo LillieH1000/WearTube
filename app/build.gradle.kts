@@ -11,8 +11,9 @@ android {
     defaultConfig {
         applicationId = "h.lillie.weartube"
         minSdk = 30
-        // noinspection EditedTargetSdkVersion
-        targetSdk = 34
+        // noinspection OldTargetApi,EditedTargetSdkVersion
+        targetSdk = 33
+        compileSdk = 34
         versionCode = 1
         versionName = "1.0.0"
         vectorDrawables {

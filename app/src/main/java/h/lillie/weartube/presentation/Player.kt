@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -52,13 +53,27 @@ class Player : AppCompatActivity(), Player.Listener {
         }
 
         val loopButton: ImageButton = findViewById(R.id.loopButton)
-        loopButton.y = Converter().dpToPx(this@Player, -40f)
+        loopButton.x = Converter().dpToPx(this@Player, -20f)
+        loopButton.y = Converter().dpToPx(this@Player, -50f)
         loopButton.setOnClickListener {
             if (playerController.repeatMode == Player.REPEAT_MODE_OFF) {
                 playerController.repeatMode = Player.REPEAT_MODE_ONE
             } else {
                 playerController.repeatMode = Player.REPEAT_MODE_OFF
             }
+        }
+
+        val bluetoothButton: ImageButton = findViewById(R.id.bluetoothButton)
+        bluetoothButton.x = Converter().dpToPx(this@Player, 20f)
+        bluetoothButton.y = Converter().dpToPx(this@Player, -50f)
+        bluetoothButton.setOnClickListener {
+            playerController.pause()
+            val intent: Intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.putExtra("EXTRA_CONNECTION_ONLY", true)
+            intent.putExtra("EXTRA_CLOSE_ON_CONNECT", true)
+            intent.putExtra("android.bluetooth.devicepicker.extra.FILTER_TYPE", 1)
+            startActivity(intent)
         }
 
         playerSlider = findViewById(R.id.playerSlider)
@@ -80,6 +95,7 @@ class Player : AppCompatActivity(), Player.Listener {
                 seekForwardButton.visibility = View.VISIBLE
                 playerSlider.visibility = View.VISIBLE
                 loopButton.visibility = View.VISIBLE
+                bluetoothButton.visibility = View.VISIBLE
             } else {
                 overlayView.setBackgroundColor(0x00000000)
                 playPauseButton.visibility = View.GONE
@@ -87,6 +103,7 @@ class Player : AppCompatActivity(), Player.Listener {
                 seekForwardButton.visibility = View.GONE
                 playerSlider.visibility = View.GONE
                 loopButton.visibility = View.GONE
+                bluetoothButton.visibility = View.GONE
             }
         }
 

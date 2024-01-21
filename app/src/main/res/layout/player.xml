@@ -77,6 +77,19 @@
             android:visibility="gone"
             tools:ignore="ContentDescription,PrivateResource,UseAppTint" />
 
+        <ImageButton
+            android:id="@+id/bluetoothButton"
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/exo_ic_audiotrack"
+            android:scaleType="centerCrop"
+            android:padding="5dp"
+            android:background="@color/transparent"
+            android:tint="@color/white"
+            android:visibility="gone"
+            tools:ignore="ContentDescription,PrivateResource,UseAppTint" />
+
         <com.google.android.material.slider.Slider
             android:id="@+id/playerSlider"
             android:layout_height="0dp"

@@ -1,13 +1,15 @@
 package h.lillie.weartube.presentation
 
 import android.content.Context
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 
 class Extractor {
-    fun playerRequest(context: Context, videoID: String) : String {
+    suspend fun playerRequest(context: Context, videoID: String) : String = withContext(Dispatchers.IO) {
         val body: RequestBody = """{
             "context": {
                 "client": {
@@ -31,10 +33,10 @@ class Extractor {
             .url("https://www.youtube.com/youtubei/v1/player?key=AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc&prettyPrint=false")
             .build()
 
-        return client.newCall(request).execute().body?.string()!!
+        return@withContext client.newCall(request).execute().body?.string()!!
     }
 
-    fun nextRequest(context: Context, videoID: String) : String {
+    suspend fun nextRequest(context: Context, videoID: String) : String = withContext(Dispatchers.IO) {
         val body: RequestBody = """{
             "context": {
                 "client": {
@@ -58,10 +60,10 @@ class Extractor {
             .url("https://www.youtube.com/youtubei/v1/next?key=AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc&prettyPrint=false")
             .build()
 
-        return client.newCall(request).execute().body?.string()!!
+        return@withContext client.newCall(request).execute().body?.string()!!
     }
 
-    fun browseRequest(context: Context, browseID: String) : String {
+    suspend fun browseRequest(context: Context, browseID: String) : String = withContext(Dispatchers.IO) {
         val body: RequestBody = """{
             "context": {
                 "client": {
@@ -85,10 +87,10 @@ class Extractor {
             .url("https://www.youtube.com/youtubei/v1/browse?key=AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc&prettyPrint=false")
             .build()
 
-        return client.newCall(request).execute().body?.string()!!
+        return@withContext client.newCall(request).execute().body?.string()!!
     }
 
-    fun searchRequest(context: Context, query: String) : String {
+    suspend fun searchRequest(context: Context, query: String) : String = withContext(Dispatchers.IO) {
         val body: RequestBody = """{
             "context": {
                 "client": {
@@ -110,6 +112,6 @@ class Extractor {
             .url("https://www.youtube.com/youtubei/v1/search?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false")
             .build()
 
-        return client.newCall(request).execute().body?.string()!!
+        return@withContext client.newCall(request).execute().body?.string()!!
     }
 }

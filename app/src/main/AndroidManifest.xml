@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,8 +12,10 @@
         android:icon="@mipmap/icon"
         android:label="WearTube"
         android:supportsRtl="false"
+        android:enableOnBackInvokedCallback="true"
         android:name=".presentation.Application"
-        android:theme="@style/MainTheme">
+        android:theme="@style/MainTheme"
+        tools:targetApi="tiramisu">
         <uses-library android:name="com.google.android.wearable" android:required="true" />
         <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />
         <activity

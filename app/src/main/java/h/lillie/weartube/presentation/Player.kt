@@ -51,16 +51,6 @@ class Player : AppCompatActivity(), Player.Listener {
             playerController.seekForward()
         }
 
-        playerSlider = findViewById(R.id.playerSlider)
-        playerSlider.y = Converter().dpToPx(this@Player, 40f)
-        playerSlider.addOnChangeListener { _, value, fromUser ->
-            val duration: Float = playerController.duration.toFloat()
-            val position: Float = playerController.currentPosition.toFloat()
-            if (fromUser && duration >= 0 && position >= 0) {
-                playerController.seekTo(value.toLong())
-            }
-        }
-
         val loopButton: ImageButton = findViewById(R.id.loopButton)
         loopButton.y = Converter().dpToPx(this@Player, -40f)
         loopButton.setOnClickListener {
@@ -68,6 +58,16 @@ class Player : AppCompatActivity(), Player.Listener {
                 playerController.repeatMode = Player.REPEAT_MODE_ONE
             } else {
                 playerController.repeatMode = Player.REPEAT_MODE_OFF
+            }
+        }
+
+        playerSlider = findViewById(R.id.playerSlider)
+        playerSlider.y = Converter().dpToPx(this@Player, 40f)
+        playerSlider.addOnChangeListener { _, value, fromUser ->
+            val duration: Float = playerController.duration.toFloat()
+            val position: Float = playerController.currentPosition.toFloat()
+            if (fromUser && duration >= 0 && position >= 0) {
+                playerController.seekTo(value.toLong())
             }
         }
 
@@ -111,9 +111,9 @@ class Player : AppCompatActivity(), Player.Listener {
         super.onIsPlayingChanged(isPlaying)
         val playPauseButton: ImageButton = findViewById(R.id.playPauseButton)
         if (!isPlaying) {
-            playPauseButton.setImageResource(R.drawable.play)
+            playPauseButton.setImageResource(androidx.media3.ui.R.drawable.exo_icon_play)
         } else {
-            playPauseButton.setImageResource(R.drawable.pause)
+            playPauseButton.setImageResource(androidx.media3.ui.R.drawable.exo_icon_pause)
         }
     }
 

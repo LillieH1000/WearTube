@@ -45,26 +45,37 @@
             android:layout_height="35dp"
             android:layout_width="35dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/back"
+            android:src="@drawable/exo_ic_rewind"
             android:scaleType="centerCrop"
-            android:padding="2dp"
             android:background="@color/transparent"
             android:tint="@color/white"
             android:visibility="gone"
-            tools:ignore="ContentDescription,UseAppTint" />
+            tools:ignore="ContentDescription,PrivateResource,UseAppTint" />
 
         <ImageButton
             android:id="@+id/seekForwardButton"
             android:layout_height="35dp"
             android:layout_width="35dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/forward"
+            android:src="@drawable/exo_ic_forward"
             android:scaleType="centerCrop"
-            android:padding="2dp"
             android:background="@color/transparent"
             android:tint="@color/white"
             android:visibility="gone"
-            tools:ignore="ContentDescription,UseAppTint" />
+            tools:ignore="ContentDescription,PrivateResource,UseAppTint" />
+
+        <ImageButton
+            android:id="@+id/loopButton"
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/exo_icon_repeat_all"
+            android:scaleType="centerCrop"
+            android:padding="3dp"
+            android:background="@color/transparent"
+            android:tint="@color/white"
+            android:visibility="gone"
+            tools:ignore="ContentDescription,PrivateResource,UseAppTint" />
 
         <com.google.android.material.slider.Slider
             android:id="@+id/playerSlider"
@@ -80,19 +91,6 @@
             app:trackHeight="3dp"
             app:thumbRadius="5dp"
             app:haloRadius="5dp" />
-
-        <ImageButton
-            android:id="@+id/loopButton"
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/exo_icon_repeat_all"
-            android:scaleType="centerCrop"
-            android:padding="5dp"
-            android:background="@color/transparent"
-            android:tint="@color/white"
-            android:visibility="gone"
-            tools:ignore="ContentDescription,PrivateResource,UseAppTint" />
 
     </RelativeLayout>
 

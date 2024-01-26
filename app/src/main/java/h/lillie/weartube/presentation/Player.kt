@@ -2,19 +2,29 @@ package h.lillie.weartube.presentation
 
 import android.annotation.SuppressLint
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.view.GestureDetector
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.PopupWindow
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.media3.common.Player
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionToken
 import androidx.media3.ui.PlayerView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.slider.Slider
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 import h.lillie.weartube.R
@@ -68,12 +78,7 @@ class Player : AppCompatActivity(), Player.Listener {
         bluetoothButton.y = Converter().dpToPx(this@Player, -50f)
         bluetoothButton.setOnClickListener {
             playerController.pause()
-            val intent: Intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.putExtra("EXTRA_CONNECTION_ONLY", true)
-            intent.putExtra("EXTRA_CLOSE_ON_CONNECT", true)
-            intent.putExtra("android.bluetooth.devicepicker.extra.FILTER_TYPE", 1)
-            startActivity(intent)
+            showOptions()
         }
 
         playerSlider = findViewById(R.id.playerSlider)
@@ -160,6 +165,52 @@ class Player : AppCompatActivity(), Player.Listener {
 
         MediaController.releaseFuture(playerControllerFuture)
         stopService(Intent(this@Player, PlayerService::class.java))
+    }
+
+    private fun showOptions() {
+        val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.options, null, false)
+
+        val popupWindow = PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+
+        val gestureDetector = GestureDetector(this@Player, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+                if (e1?.action == MotionEvent.ACTION_DOWN && e2.action == MotionEvent.ACTION_UP && e2.x > e1.x) {
+                    popupWindow.dismiss()
+                }
+                return super.onFling(e1, e2, velocityX, velocityY)
+            }
+        })
+
+        view.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                return gestureDetector.onTouchEvent(event!!)
+            }
+        })
+
+        val scrollView: ScrollView = view.findViewById(R.id.scrollView)
+        scrollView.requestFocus()
+
+        val bluetoothButton: MaterialButton = view.findViewById(R.id.bluetoothButton)
+        bluetoothButton.setOnClickListener {
+            val intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.putExtra("EXTRA_CONNECTION_ONLY", true)
+            intent.putExtra("EXTRA_CLOSE_ON_CONNECT", true)
+            intent.putExtra("android.bluetooth.devicepicker.extra.FILTER_TYPE", 1)
+            startActivity(intent)
+        }
+
+        val loopSwitch: SwitchMaterial = view.findViewById(R.id.loopSwitch)
+        loopSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (!isChecked) {
+                playerController.repeatMode = Player.REPEAT_MODE_OFF
+            } else {
+                playerController.repeatMode = Player.REPEAT_MODE_ONE
+            }
+        }
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
     }
 
     private val playerSliderTask = object : Runnable {

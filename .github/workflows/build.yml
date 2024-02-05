@@ -24,18 +24,15 @@ jobs:
       - name: Build Gradle
         run: ./gradlew build
 
-      - name: Build Debug Apk
+      - name: Assemble Debug Apk
         run: ./gradlew assembleDebug
 
-      - name: Build Release Apk
+      - name: Assemble Release Apk
         run: ./gradlew assembleRelease
 
-      - name: Upload Debug Apk
-        uses: actions/upload-artifact@v3
+      - name: Upload Apks
+        uses: actions/upload-artifact@v4
         with:
-          path: ./app/build/outputs/apk/debug/*.apk
-
-      - name: Upload Release Apk
-        uses: actions/upload-artifact@v3
-        with:
-          path: ./app/build/outputs/apk/release/*.apk
+          path: |
+            ./app/build/outputs/apk/debug/*.apk
+            ./app/build/outputs/apk/release/*.apk

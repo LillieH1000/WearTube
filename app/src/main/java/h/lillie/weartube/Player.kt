@@ -17,7 +17,6 @@ import androidx.media3.ui.PlayerView
 import com.google.android.material.slider.Slider
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
-import h.lillie.weartube.R
 
 @SuppressLint("PrivateResource")
 class Player : AppCompatActivity(), Player.Listener {

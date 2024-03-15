@@ -14,8 +14,7 @@
         android:enableOnBackInvokedCallback="true"
         android:name=".Application"
         android:theme="@style/MainTheme"
-        tools:ignore="DataExtractionRules, MissingApplicationIcon"
-        tools:targetApi="tiramisu">
+        tools:ignore="DataExtractionRules, MissingApplicationIcon">
         <uses-library android:name="com.google.android.wearable" android:required="true" />
         <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />
         <activity

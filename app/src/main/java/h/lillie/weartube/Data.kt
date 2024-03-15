@@ -1,4 +1,4 @@
-package h.lillie.weartube.presentation
+package h.lillie.weartube
 
 data class Data(
     var videoURL: String,

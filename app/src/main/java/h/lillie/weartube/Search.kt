@@ -1,4 +1,4 @@
-package h.lillie.weartube.presentation
+package h.lillie.weartube
 
 import android.content.Context
 import android.content.Intent

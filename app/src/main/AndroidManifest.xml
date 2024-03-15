@@ -13,13 +13,13 @@
         android:label="WearTube"
         android:supportsRtl="false"
         android:enableOnBackInvokedCallback="true"
-        android:name=".presentation.Application"
+        android:name=".Application"
         android:theme="@style/MainTheme"
         tools:targetApi="tiramisu">
         <uses-library android:name="com.google.android.wearable" android:required="true" />
         <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />
         <activity
-            android:name=".presentation.Main"
+            android:name=".Main"
             android:exported="true"
             android:taskAffinity="">
             <intent-filter>
@@ -28,22 +28,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.Trending"
+            android:name=".Trending"
             android:exported="true"
             android:taskAffinity="">
         </activity>
         <activity
-            android:name=".presentation.Search"
+            android:name=".Search"
             android:exported="true"
             android:taskAffinity="">
         </activity>
         <activity
-            android:name=".presentation.Player"
+            android:name=".Player"
             android:exported="true"
             android:taskAffinity="">
         </activity>
         <service
-            android:name=".presentation.PlayerService"
+            android:name=".PlayerService"
             android:foregroundServiceType="mediaPlayback"
             android:exported="false">
             <intent-filter>

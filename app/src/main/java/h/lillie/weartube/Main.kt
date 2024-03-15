@@ -6,7 +6,6 @@ import android.content.Intent
 import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.os.PowerManager
-import android.os.StrictMode
 import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
@@ -38,9 +37,6 @@ class Main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-
-        val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
-        StrictMode.setThreadPolicy(policy)
 
         val wifiManager = getSystemService(Context.WIFI_SERVICE) as WifiManager
         wifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, "WearTube:WifiLock")

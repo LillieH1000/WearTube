@@ -63,33 +63,6 @@ class Extractor {
         return@withContext client.newCall(request).execute().body?.string()!!
     }
 
-    suspend fun browseRequest(context: Context, browseID: String) : String = withContext(Dispatchers.IO) {
-        val body: RequestBody = """{
-            "context": {
-                "client": {
-                    "hl": "en",
-                    "gl": "${context.resources.configuration.locales.get(0).country}",
-                    "clientName": "IOS",
-                    "clientVersion": "18.11.34",
-                    "deviceModel": "iPhone14,3"
-                }
-            },
-            "contentCheckOk": true,
-            "racyCheckOk": true,
-            "browseId": "$browseID"
-        }""".trimIndent().toRequestBody()
-
-        val client: OkHttpClient = OkHttpClient.Builder().build()
-
-        val request = Request.Builder()
-            .method("POST", body)
-            .header("User-Agent", "com.google.ios.youtube/18.11.34 (iPhone14,3; U; CPU iOS 15_6 like Mac OS X)")
-            .url("https://www.youtube.com/youtubei/v1/browse?key=AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc&prettyPrint=false")
-            .build()
-
-        return@withContext client.newCall(request).execute().body?.string()!!
-    }
-
     suspend fun searchRequest(context: Context, query: String) : String = withContext(Dispatchers.IO) {
         val body: RequestBody = """{
             "context": {

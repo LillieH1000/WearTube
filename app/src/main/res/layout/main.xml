@@ -1,57 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
+    android:paddingTop="10dp"
     android:paddingBottom="20dp"
     android:background="@color/black">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:clickable="false">
+        android:layout_height="56dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:inputType="text"
+        android:hint="Search Video Name"
+        tools:ignore="Autofill,LabelFor,HardcodedText" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/trending"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+        <LinearLayout
+            android:id="@+id/scrollLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Trending"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:cornerRadius="32dp"
-            tools:ignore="HardcodedText,RtlHardcoded" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:clickable="false" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Search"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:cornerRadius="32dp"
-            tools:ignore="HardcodedText,RtlHardcoded" />
+    </ScrollView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/settings"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Settings"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:cornerRadius="32dp"
-            tools:ignore="HardcodedText,RtlHardcoded" />
-
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>

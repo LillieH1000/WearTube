@@ -28,18 +28,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Trending"
-            android:launchMode="singleTask"
-            android:exported="true"
-            android:taskAffinity="">
-        </activity>
-        <activity
-            android:name=".Search"
-            android:launchMode="singleTask"
-            android:exported="true"
-            android:taskAffinity="">
-        </activity>
-        <activity
             android:name=".Player"
             android:launchMode="singleTask"
             android:exported="true"

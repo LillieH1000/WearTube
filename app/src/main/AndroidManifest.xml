@@ -9,12 +9,12 @@
     <uses-feature android:name="android.hardware.type.watch" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/icon"
         android:label="WearTube"
         android:supportsRtl="false"
         android:enableOnBackInvokedCallback="true"
         android:name=".Application"
         android:theme="@style/MainTheme"
+        tools:ignore="MissingApplicationIcon"
         tools:targetApi="tiramisu">
         <uses-library android:name="com.google.android.wearable" android:required="true" />
         <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />
